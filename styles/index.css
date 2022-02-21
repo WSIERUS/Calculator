@@ -1,1 +1,44 @@
-/* No CSS *//*# sourceMappingURL=index.css.map */
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #dddddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.calculator {
+  min-width: 6cm;
+  width: 25vw;
+}
+
+.calculator-display {
+  height: 5cm;
+  width: 100vw;
+  border: 1px solid black;
+  text-align: right;
+}
+
+#calculator-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.normal-button {
+  width: calc(100%/3);
+  border: 1px solid grey;
+  cursor: pointer;
+}
+/*# sourceMappingURL=index.css.map */
