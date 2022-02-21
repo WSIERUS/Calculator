@@ -28,45 +28,45 @@ const operationButtonType = (type, value, name) => {
   if (type === 'number') {
     actuallyNumber = actuallyNumber + value.toString()
     displayString += name
-    isNextMustBeNumber = false
-    renderDisplay()
   } 
-  else if (type === 'operator' && isNextMustBeNumber === false) {
-    operationNumberCache.push(parseInt(actuallyNumber))
-    displayString += name
+  else if (type === 'operator' && (actuallyNumber.length || operationNumberCache.length > 0)) {
+    if(actuallyNumber) operationNumberCache.push(parseInt(actuallyNumber))
     actuallyNumber = ''
-    isNextMustBeNumber = true
-    operationOperatorCache.push(value)
-    renderDisplay()
-  }
-  else if (type === 'operator' && isNextMustBeNumber === true) {
-    if(operationOperatorCache === 0 )operationOperatorCache[operationOperatorCache.length] = value
-    else operationOperatorCache[operationOperatorCache.length-1] = value
-    displayString += name
-    renderDisplay()
+    if(operationNumberCache.length > operationOperatorCache.length) {
+      displayString += name
+      operationOperatorCache.push(value)
+    }
+    else if (operationNumberCache.length <= operationOperatorCache.length) {
+      operationOperatorCache[(operationOperatorCache.length-1)] = value
+      displayString = displayString.slice(0, displayString.length-1) + name
+    }
   }
   else if (type === 'checkResult') {
     checkResult()
-    renderDisplay()
   }
+  renderDisplay()
+}
+
+const removeButton = () => {
+  console.log('dziala') // Dopracować
 }
 
 const checkResult = () => {
   let result
   operationNumberCache.push(parseInt(actuallyNumber))
   actuallyNumber = ''
-  for (let i = operationOperatorCache.length; i >= 1; i--) {
+  for (let i = operationOperatorCache.length; i >= 1; i = operationOperatorCache.length) {
     result = defaultOperation(operationNumberCache[0], operationNumberCache[1], operationOperatorCache[0])
-    console.log(result)
     operationNumberCache.shift()
     operationNumberCache.shift()
+    operationNumberCache.unshift(result)
     operationOperatorCache.shift()
   }
-  operationNumberCache[0] = result  
+  operationNumberCache = []
+  actuallyNumber = result.toString()
+  displayString = result.toString()
   isNextMustBeNumber = true
-  
-  displayString = result
-  
-  i = operationOperatorCache.length
-  return result
 }
+
+// Brak komunikatu dotyczącego liczb naturalnych zwykła walidacja
+// Brak funkcji czyszczenia pola kiedy actuallyNumber ma coś to wtedy czysci operator i wrzuca ostatnią liczbę z tablicy do actuallyNumber

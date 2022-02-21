@@ -9,7 +9,9 @@ buttons.map(button => {
 })
 
 const renderDisplay = () => {
-  document.querySelector('.calculator-display').textContent = displayString
+  document.querySelector('#calculator-display').textContent = displayString
 }
 
 renderDisplay()
+
+// Brak ekranu startowego
