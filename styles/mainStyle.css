@@ -32,6 +32,7 @@ body {
   height: 6cm;
   width: 100vw;
   border: 1px solid black;
+  background: white;
   text-align: right;
 }
 
@@ -58,4 +59,4 @@ body {
 .triple-button {
   width: 100%;
 }
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=mainStyle.css.map */

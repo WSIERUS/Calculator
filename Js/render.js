@@ -4,7 +4,7 @@ buttons.map(button => {
   const element = document.createElement('button')
   element.textContent = button.name
   element.className = button.class
-  element.addEventListener('click', () => operationButtonType(button.type, button.value))
+  element.addEventListener('click', () => operationButtonType(button.type, button.value, button.name))
   calculator.appendChild(element)
 })
 
