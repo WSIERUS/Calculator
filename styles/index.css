@@ -1,3 +1,12 @@
+.normal-button, .double-button, .triple-button {
+  height: 1.5cm;
+  border: 1px solid grey;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 0.5cm;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -20,7 +29,7 @@ body {
 }
 
 .calculator-display {
-  height: 5cm;
+  height: 6cm;
   width: 100vw;
   border: 1px solid black;
   text-align: right;
@@ -34,11 +43,19 @@ body {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .normal-button {
   width: calc(100%/3);
-  border: 1px solid grey;
-  cursor: pointer;
+}
+
+.double-button {
+  width: calc(100%/3*2);
+}
+
+.triple-button {
+  width: 100%;
 }
 /*# sourceMappingURL=index.css.map */

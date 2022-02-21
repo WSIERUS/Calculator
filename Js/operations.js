@@ -27,9 +27,14 @@ const defaultOperation = (a, b, c) => c(a, b)
 const operationButtonType = (type, value) => {
   if (type === 'number') {
     switch (isNextNumber) {
-      case true:
+      case true: actuallyNumber = actuallyNumber + value.toString() 
+      break
+      case false: 
+        operationNumberCache.push(parseInt(actuallyNumber))
+        actuallyNumber = ''
+        isNextNumber = true
+      break
     }
-    operationNumberCache.push(value)
   }
   else if (type === 'operator') {
     operationOperatorCache.push(value)
@@ -37,8 +42,9 @@ const operationButtonType = (type, value) => {
   else if (type === 'checkResult') {
     let result = null
     for (let i = operationNumberCache.length; i > 0; i = operationNumberCache.length) {
-      result = operation(operationNumberCache[0], operationNumberCache[1], value)
+      result = operation(operationNumberCache[0], operationNumberCache[1], operationOperatorCache[0])
       operationNumberCache.unshift(result)
+      operationOperatorCache.shift()
     }
     result = operationNumberCache[0]
     return result

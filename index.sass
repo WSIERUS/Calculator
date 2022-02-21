@@ -1,3 +1,11 @@
+%Button
+  height: 1.5cm
+  border: 1px solid grey
+  cursor: pointer
+  font-family: 'Poppins', sans-serif
+  font-weight: bold
+  font-size: 0.5cm
+
 body
   width: 100vw
   height: 100vh
@@ -12,7 +20,7 @@ body
   width: 25vw
 
 .calculator-display
-  height: 5cm
+  height: 6cm
   width: 100vw
   border: 1px solid black
   text-align: right
@@ -20,8 +28,16 @@ body
 #calculator-buttons
   display: flex
   flex-direction: row-reverse
+  flex-wrap: wrap
 
 .normal-button
   width: calc(100%/3)
-  border: 1px solid grey
-  cursor: pointer
+  @extend %Button
+
+.double-button
+  width: calc(100%/3*2)
+  @extend %Button
+
+.triple-button
+  width: 100%
+  @extend %Button
