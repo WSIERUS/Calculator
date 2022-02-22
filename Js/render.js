@@ -5,16 +5,20 @@ const controlPanelButtonsSection = document.querySelector('#control-panel-button
 
 buttons.map(button => { // Mapowanie przycisków dla check listy
   if(button.visible){
+
     const input = document.createElement('input')
     input.addEventListener('click', () => handleControlPanelButton(button, input))
     input.setAttribute('type', 'checkbox')
     input.checked = button.visible
+
     const span = document.createElement('span')
     span.textContent = `Aktywuj "${button.name}"`
+
     const label = document.createElement('label')
     label.className = 'check-list-label'
     label.appendChild(input)
     label.appendChild(span)
+
     controlPanelButtonsSection.appendChild(label)
   }
 })
@@ -55,4 +59,4 @@ const renderDisplay = () => { // Renderowanie wyniku na wyświetlaczu
   document.querySelector('#calculator-display').textContent = displayString
 }
 
-renderDisplay()
+renderDisplay() // Render wstępny

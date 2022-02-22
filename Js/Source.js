@@ -21,7 +21,7 @@ const buttons = [ // Pseudo baza danych
   {name:'=', type:'checkResult', class:'triple-button', value:'checkResult', visible:true},
 ]
 
-let displayString = '' // state wyświetlanego działania
+let displayString = '' // Stan wyświetlanego działania
 
 let actuallyNumber = '' // Aktualna liczba w operacji
 

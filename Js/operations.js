@@ -8,13 +8,19 @@ multiple = (a, b) => a * b
 
 division = (a, b) => a / b
 
-exponentiation = (a, b) => {
-  if(a == a.toFixed(0) && b == b.toFixed(0)){
+exponentiation = (a, b) => { // a to liczba potęgowana, b to wielkość potęgi
+  if(a == a.toFixed(0) && b == b.toFixed(0) && a >= 0 && b >= 0){
     let result = a
-    for (let i = 1; i < b; i++) {
-      result = result * a
+    if(b === 0) { // jeśli potęga to 0 wtedy zwraca po działaniu 1
+      result = 1
+      return result
     }
-    return result
+    else {
+      for (let i = 1; i < b; i++) {
+        result = result * a
+      }
+      return result
+    }
   }
   else {
     alert('możesz wykonać potęgowanie tylko dla liczb naturalnych')
@@ -39,11 +45,14 @@ strong = (a) => {
 const defaultOperation = (a, b, c) => c(a, b) // Działanie uniwersalne
 
 const operationButtonType = (type, value, display) => { // Bramka logiczna przez którą przepuszczamy tablice liczb i operatorów. Wykrywa typ przycisku i dokonuje odpowiedniej operacji
-  if (type === 'number' && operationOperatorCache[operationOperatorCache.length-1] !== strong) {
-    actuallyNumber = actuallyNumber + value.toString()
-    displayString += display
+  if (type === 'number' && operationOperatorCache[operationOperatorCache.length-1] !== strong) { // Po znaku silni nie możesz dodać liczby
+    if(operationOperatorCache[operationOperatorCache.length-1] === division && value === 0) return alert('nie dziel przez zero!') // Nie dziel przez zero ;)
+    else{
+      actuallyNumber = actuallyNumber + value.toString()
+      displayString += display
+    }
   } 
-  else if (type === 'operator' && (actuallyNumber.length || operationNumberCache.length > 0)) {
+  else if (type === 'operator' && (actuallyNumber.length || operationNumberCache.length > 0)) { // Dodaj operator
     if(actuallyNumber) operationNumberCache.push(parseFloat(actuallyNumber))
     actuallyNumber = ''
     if(operationNumberCache.length > operationOperatorCache.length) {
@@ -55,10 +64,10 @@ const operationButtonType = (type, value, display) => { // Bramka logiczna przez
       displayString = displayString.slice(0, displayString.length-1) + display
     }
   }
-  else if (type === 'checkResult') {
+  else if (type === 'checkResult') { // Sprawdź rezultat
     checkResult()
   }
-  else if (type === 'delete') {
+  else if (type === 'delete') { // Usuń
     if(actuallyNumber === '') {
       operationOperatorCache.pop()
       actuallyNumber = operationNumberCache.pop().toString()
@@ -69,7 +78,7 @@ const operationButtonType = (type, value, display) => { // Bramka logiczna przez
     displayString = displayString.slice(0,displayString.length-1)
     console.log(operationNumberCache, operationOperatorCache, actuallyNumber)
   }
-  else if (type === 'delete-all') {
+  else if (type === 'delete-all') { // Usuń wszystko
     operationNumberCache = []
     operationOperatorCache = []
     displayString = ''
@@ -80,16 +89,17 @@ const operationButtonType = (type, value, display) => { // Bramka logiczna przez
 
 const checkResult = () => { // Weryfikacja rezultatu kiedy wciśniemy "="
   let result
-  operationNumberCache.push(parseInt(actuallyNumber))
+  operationNumberCache.push(parseFloat(actuallyNumber))
   actuallyNumber = ''
-  for (let i = operationOperatorCache.length; i >= 1; i = operationOperatorCache.length) {
+
+  for (let i = operationOperatorCache.length; i >= 1; i = operationOperatorCache.length) { // Pętla wykonywania obliczeń dla złożonych działań
     result = defaultOperation(operationNumberCache[0], operationNumberCache[1], operationOperatorCache[0])
     operationNumberCache.shift()
-    operationNumberCache.shift()
-    operationNumberCache.unshift(result)
+    operationNumberCache[0] = result
     operationOperatorCache.shift()
   }
-  operationNumberCache = []
+
+  operationNumberCache = [] // Formatowanie/Przygotowanie pamięci cache dla kolejnych działań
   actuallyNumber = result.toString()
   displayString = result.toString()
   isNextMustBeNumber = true
