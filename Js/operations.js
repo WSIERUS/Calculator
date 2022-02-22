@@ -1,3 +1,5 @@
+// Wszystkie typy działań
+
 add = (a, b) => a + b
 
 minus = (a, b) => a - b
@@ -34,23 +36,23 @@ strong = (a) => {
   }
 }
 
-const defaultOperation = (a, b, c) => c(a, b)
+const defaultOperation = (a, b, c) => c(a, b) // Działanie uniwersalne
 
-const operationButtonType = (type, value, name) => {
+const operationButtonType = (type, value, display) => { // Bramka logiczna przez którą przepuszczamy tablice liczb i operatorów. Wykrywa typ przycisku i dokonuje odpowiedniej operacji
   if (type === 'number' && operationOperatorCache[operationOperatorCache.length-1] !== strong) {
     actuallyNumber = actuallyNumber + value.toString()
-    displayString += name
+    displayString += display
   } 
   else if (type === 'operator' && (actuallyNumber.length || operationNumberCache.length > 0)) {
     if(actuallyNumber) operationNumberCache.push(parseFloat(actuallyNumber))
     actuallyNumber = ''
     if(operationNumberCache.length > operationOperatorCache.length) {
-      displayString += name
+      displayString += display
       operationOperatorCache.push(value)
     }
     else if (operationNumberCache.length <= operationOperatorCache.length) {
       operationOperatorCache[(operationOperatorCache.length-1)] = value
-      displayString = displayString.slice(0, displayString.length-1) + name
+      displayString = displayString.slice(0, displayString.length-1) + display
     }
   }
   else if (type === 'checkResult') {
@@ -76,7 +78,7 @@ const operationButtonType = (type, value, name) => {
   renderDisplay()
 }
 
-const checkResult = () => {
+const checkResult = () => { // Weryfikacja rezultatu kiedy wciśniemy "="
   let result
   operationNumberCache.push(parseInt(actuallyNumber))
   actuallyNumber = ''
