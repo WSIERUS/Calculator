@@ -149,4 +149,9 @@ body {
 .triple-button {
   width: 100%;
 }
+
+.moved {
+  border-color: black;
+  background-color: #c2c2c2;
+}
 /*# sourceMappingURL=mainStyle.css.map */
