@@ -7,30 +7,42 @@ multiple = (a, b) => a * b
 division = (a, b) => a / b
 
 exponentiation = (a, b) => {
-  let result = a
-  for (let i = 1; i < b; i++) {
-    result = result * a
+  if(a == a.toFixed(0) && b == b.toFixed(0)){
+    let result = a
+    for (let i = 1; i < b; i++) {
+      result = result * a
+    }
+    return result
   }
-  return result
+  else {
+    alert('możesz wykonać potęgowanie tylko dla liczb naturalnych')
+    return null
+  }
 }
 
 strong = (a) => {
-  let result = 1
-  for (let i = 1; i <= a; i++) {
-    result = result * i
+  if(a == a.toFixed(0)){
+    let result = 1
+    for (let i = 1; i <= a; i++) {
+      result = result * i
+    }
+    return result
   }
-  return result
+  else {
+    alert('możesz wykonać silnie tylko dla liczb naturalnych')
+    return null
+  }
 }
 
 const defaultOperation = (a, b, c) => c(a, b)
 
 const operationButtonType = (type, value, name) => {
-  if (type === 'number') {
+  if (type === 'number' && operationOperatorCache[operationOperatorCache.length-1] !== strong) {
     actuallyNumber = actuallyNumber + value.toString()
     displayString += name
   } 
   else if (type === 'operator' && (actuallyNumber.length || operationNumberCache.length > 0)) {
-    if(actuallyNumber) operationNumberCache.push(parseInt(actuallyNumber))
+    if(actuallyNumber) operationNumberCache.push(parseFloat(actuallyNumber))
     actuallyNumber = ''
     if(operationNumberCache.length > operationOperatorCache.length) {
       displayString += name
@@ -44,11 +56,24 @@ const operationButtonType = (type, value, name) => {
   else if (type === 'checkResult') {
     checkResult()
   }
+  else if (type === 'delete') {
+    if(actuallyNumber === '') {
+      operationOperatorCache.pop()
+      actuallyNumber = operationNumberCache.pop().toString()
+    }
+    else {
+      actuallyNumber = actuallyNumber.slice(0, actuallyNumber.length-1)
+    }
+    displayString = displayString.slice(0,displayString.length-1)
+    console.log(operationNumberCache, operationOperatorCache, actuallyNumber)
+  }
+  else if (type === 'delete-all') {
+    operationNumberCache = []
+    operationOperatorCache = []
+    displayString = ''
+    actuallyNumber = ''
+  }
   renderDisplay()
-}
-
-const removeButton = () => {
-  console.log('dziala') // Dopracować
 }
 
 const checkResult = () => {
@@ -67,6 +92,3 @@ const checkResult = () => {
   displayString = result.toString()
   isNextMustBeNumber = true
 }
-
-// Brak komunikatu dotyczącego liczb naturalnych zwykła walidacja
-// Brak funkcji czyszczenia pola kiedy actuallyNumber ma coś to wtedy czysci operator i wrzuca ostatnią liczbę z tablicy do actuallyNumber

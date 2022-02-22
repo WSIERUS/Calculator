@@ -14,8 +14,11 @@ const buttons = [
   {name:'7', type:'number', class:'normal-button', value:7, visible:true},
   {name:'8', type:'number', class:'normal-button', value:8, visible:true},
   {name:'9', type:'number', class:'normal-button', value:9, visible:true},
-  {name:'0', type:'number', class:'normal-button', value:0, visible:true},
-  {name:'=', type:'checkResult', class:'double-button', value:'checkResult'},
+  {name:'0', type:'number', class:'double-button', value:0, visible:true},
+  {name:'.', type:'number', class:'normal-button', value:'.', visible:true},
+  {name:'CE', type:'delete-all', class:'double-button', value:0, visible:true},
+  {name:'C', type:'delete', class:'normal-button', value:0, visible:true},
+  {name:'=', type:'checkResult', class:'triple-button', value:'checkResult', visible:true},
 ]
 
 let displayString = ''
@@ -25,5 +28,3 @@ let actuallyNumber = ''
 let operationNumberCache = []
 
 let operationOperatorCache = []
-
-// Sterowanie widocznością przycisków

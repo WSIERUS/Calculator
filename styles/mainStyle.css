@@ -8,6 +8,43 @@
 }
 
 body {
+  overflow: hidden;
+  margin: 0;
+}
+
+#control-panel {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+}
+
+.check-list-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.hidden {
+  margin-top: 100vh;
+}
+
+.calculator-panel {
   width: 100vw;
   height: 100vh;
   background-color: #dddddd;
@@ -20,7 +57,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow: hidden;
 }
 
 .calculator {
@@ -57,6 +93,11 @@ body {
           flex-direction: row-reverse;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  border: 1px solid grey;
+}
+
+.unvisible {
+  opacity: 30%;
 }
 
 .normal-button {
