@@ -1,6 +1,4 @@
-.normal-button,
-.double-button,
-.triple-button {
+.normal-button, .double-button, .triple-button {
   height: 1.5cm;
   border: 1px solid grey;
   cursor: pointer;
@@ -23,16 +21,16 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
   background-color: white;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
@@ -40,25 +38,25 @@ body {
 }
 
 #control-panel-buttons-section {
-  height: calc(100vh - 20%);
-  width: calc(20cm - 120px);
+  height: calc( 100vh - 20%);
+  width: calc( 20cm - 120px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
 }
 
 .check-list-label {
@@ -92,11 +90,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .calculator {
@@ -106,18 +104,18 @@ body {
 
 #calculator-display {
   height: 2cm;
-  width: calc(100% - 2px);
+  width: calc( 100% - 2px);
   border: 1px solid grey;
   background: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 0.5cm;
@@ -129,10 +127,10 @@ body {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+      flex-wrap: wrap;
   border: 1px solid grey;
 }
 
@@ -156,5 +154,4 @@ body {
   border-color: black;
   background-color: #c2c2c2;
 }
-
 /*# sourceMappingURL=mainStyle.css.map */
