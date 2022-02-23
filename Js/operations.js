@@ -46,7 +46,7 @@ const defaultOperation = (a, b, c) => c(a, b) // Działanie uniwersalne
 
 const operationButtonType = (type, value, display) => { // Bramka logiczna przez którą przepuszczamy tablice liczb i operatorów. Wykrywa typ przycisku i dokonuje odpowiedniej operacji
   if (type === 'number' && operationOperatorCache[operationOperatorCache.length-1] !== strong) { // Po znaku silni nie możesz dodać liczby
-    if(operationOperatorCache[operationOperatorCache.length-1] === division && value === 0) return alert('nie dziel przez zero!') // Nie dziel przez zero ;)
+    if(operationOperatorCache[operationOperatorCache.length-1] === division && value === 0 && actuallyNumber === '') return alert('nie dziel przez zero!') // Nie dziel przez zero ;)
     else{
       actuallyNumber = actuallyNumber + value.toString()
       displayString += display
