@@ -94,6 +94,7 @@ const checkResult = () => { // Weryfikacja rezultatu kiedy wciśniemy "="
 
   for (let i = operationOperatorCache.length; i >= 1; i = operationOperatorCache.length) { // Pętla wykonywania obliczeń dla złożonych działań
     result = defaultOperation(operationNumberCache[0], operationNumberCache[1], operationOperatorCache[0])
+    result = result.toFixed(2) // Naprawa działania
     operationNumberCache.shift()
     operationNumberCache[0] = result
     operationOperatorCache.shift()
